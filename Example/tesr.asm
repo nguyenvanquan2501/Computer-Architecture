@@ -81,6 +81,7 @@
 	.game_over_msg3 db "  ESC - EXIT     "
 	.game_over_msg4 db "YOU WON PLAYER "
 	.game_over_msg5 db "YOUR NAME > "
+	tree db 'X'
 	
 ;------------------------------------------------------------------------------------------code segment start------------------------------------------------------------------------------------ 
 .code
@@ -132,7 +133,7 @@ initialize_variable proc
 	mov heli_y,100	;tọa độ y bắt đầu của máy bay
 	mov heli_fall_speed,2	;tốc độ rơi
 	mov heli_jump_speed,8   ;tốc độ bay lên
-	mov heli_width,18       ;
+	mov heli_width,18      ;
 	mov heli_height,8		;
 	mov cave_velocity,10	;tốc độ di chuyển map
 	mov cave_gradient,1		; độ dịch của các kí tự trong map
@@ -504,6 +505,7 @@ print_interface endp
 spawn_cave proc	
 	call update_cave_pos
 	call draw_cave
+	call trap
 	ret
 spawn_cave endp
 
